@@ -1,7 +1,7 @@
 /*
 [rewrite_local]
 
-https://afzs.iosoi.cn/appstore url script-request-header https://raw.githubusercontent.com/Yu9191/Rewrite/main/appds.js
+https://app.appds.cn/appstore url script-request-header https://raw.githubusercontent.com/Yu9191/Rewrite/main/appds.js
 
 [mitm]
 hostname = app.appds.cn
