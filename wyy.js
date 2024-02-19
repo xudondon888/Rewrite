@@ -12,7 +12,8 @@ VIP音乐试听权限+
 ^https:\/\/interface3?\.music\.163\.com\/eapi\/search\/complex\/(page|rec\/song\/get) url script-request-header https://raw.githubusercontent.com/xudondon888/Rewrite/main/wyy.js
 
 # 播放器会员歌曲
-^https:\/\/interface3?\.music\.163\.com\/eapi\/v3\/song\/detail url script-request-header wyy.js
+^https:\/\/interface3?\.music\.163\.com\/eapi\/v3\/song\/detail url script-request-header https://raw.githubusercontent.com/xudondon888/Rewrite/main/wyy.js
+
 ^https:\/\/interface3?\.music\.163\.com\/eapi\/song\/(chorus|enhance\/|play\/|type\/detail\/get) url script-request-header https://raw.githubusercontent.com/xudondon888/Rewrite/main/wyy.js
 ^https:\/\/interface3?\.music\.163\.com\/eapi\/(v1\/artist\/top\/song|v3\/discovery\/recommend\/songs) url script-request-header https://raw.githubusercontent.com/xudondon888/Rewrite/main/wyy.js
 
