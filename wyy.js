@@ -1,3 +1,4 @@
+[rewrite_local]
 ^https:\/\/interface3?\.music\.163\.com\/eapi\/playermode\/ url script-request-header https://gist.githubusercontent.com/Sliverkiss/479ecf770801bb8d3efa514c56a699e7/raw/WyyCrack.js
 
 ^https:\/\/interface3?\.music\.163\.com\/eapi\/search\/complex\/(page|rec\/song\/get) url script-request-header https://gist.githubusercontent.com/Sliverkiss/479ecf770801bb8d3efa514c56a699e7/raw/WyyCrack.js
