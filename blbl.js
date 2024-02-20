@@ -12,6 +12,9 @@
 #哔哩哔哩解锁大会员
 ^http[s]?:\/\/((app|api)\.(\w{2,15})?\.(com|cn)).*player\.(v3|v2|v1).Play(URL|View).*$ url script-request-header https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
 
+^https?:\/\/.*bili.*\/x\/v\d\/account\/(mine|myinfo) url script-response-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
+^https?:\/\/.*bili.*\/bilibili\.app\.playerunite\.v1\.Player\/PlayViewUnite url script-request-header https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
+
 
 
 # Proto 动态广告,后台播放限制,播放页广告 //app.bilibili.com
@@ -47,7 +50,7 @@
 ^https:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp url reject-dict
 ^https:\/\/app\.bilibili\.com\/x\/resource\/ip url reject-dict
 
-hostname = app.bilibili.com, api.bilibili.com, api.live.bilibili.com, grpc.biliapi.net,  *.biliapi.*, *.bilibili.*
+hostname = app.bilibili.com, api.bilibili.com, api.live.bilibili.com, grpc.biliapi.net, *.biliapi.*, *.bilibili.*,  
 
 */
 
