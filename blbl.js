@@ -1,26 +1,75 @@
-
-
-/***********************************
+/*
 
 > 应用名称：Bilibili大会员
-> 脚本作者：Dawn
-> 解锁说明：解锁VIP番剧和影视
-> 更新时间：2023-08-11
-> 问题反馈：群里@我
-> 特别提醒：此版本由伟人出去玩了，群友@三年义务教育贡献的账号。
-> 特别说明：
-          本脚本仅内部群专用，请勿外传，谢谢
+> 解锁说明：解锁VIP番剧和影视 
+不要分享! 人多就挂脚本！
 
 
 [rewrite_local]
-  
-^http[s]?:\/\/((app|api)\.(\w{2,15})?\.(com|cn)).*player\.(v3|v2|v1).Play(URL|View).*$ url script-request-header https://raw.githubusercontent.com/VareaBatler/boss/main/blbl.js
+
+#!name = 哔哩哔哩
+
+#哔哩哔哩解锁大会员
+^http[s]?:\/\/((app|api)\.(\w{2,15})?\.(com|cn)).*player\.(v3|v2|v1).Play(URL|View).*$ url script-request-header https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
 
 
-[mitm] 
 
-hostname = *.biliapi.*, *.bilibili.*
+# Proto 动态广告,后台播放限制,播放页广告 //app.bilibili.com
+^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll url script-response-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
+^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Teenagers\/ModeStatus url script-response-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
+^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.(view|viewunite)\.v1\.View\/(View|ViewProgress) url script-response-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
+^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.community\.service\.dm\.v1\.DM\/DmView url script-response-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
+^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.main\.community\.reply\.v1\.Reply\/MainList url script-response-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
+^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.polymer\.app\.search\.v1\.Search\/SearchAll url script-response-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
 
-***********************************/
+# 观影页,直播间商品广告浮窗,搜索框填充词,首页信息流,热搜发现,右上角活动,标签页
+^https:\/\/api\.bilibili\.com\/pgc\/page\/(bangumi|cinema\/tab\?) url script-response-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
+^https:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom\? url script-response-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
+^https:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? url reject-dict
+^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/DefaultWords url reject-dict
+^https:\/\/app\.bilibili\.com\/x\/v2\/(feed\/index(\/story)?|search\/square)\? url script-response-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
+^https:\/\/app\.bilibili\.com\/x\/resource\/(top\/activity|show\/tab\/v2)\? url script-response-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
 
-var version_='jsjiami.com.v7';var _0x3ccbe9=_0x2301;function _0x2301(_0x36d053,_0x5a6dc4){var _0x182eec=_0x182e();return _0x2301=function(_0x23016b,_0x23f39f){_0x23016b=_0x23016b-0x13d;var _0x192019=_0x182eec[_0x23016b];if(_0x2301['AwhLFK']===undefined){var _0x304ced=function(_0x2efbf3){var _0x589809='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';var _0x295dd8='',_0x59bb4e='';for(var _0x3862af=0x0,_0x4a8fbe,_0x15c52b,_0x523734=0x0;_0x15c52b=_0x2efbf3['charAt'](_0x523734++);~_0x15c52b&&(_0x4a8fbe=_0x3862af%0x4?_0x4a8fbe*0x40+_0x15c52b:_0x15c52b,_0x3862af++%0x4)?_0x295dd8+=String['fromCharCode'](0xff&_0x4a8fbe>>(-0x2*_0x3862af&0x6)):0x0){_0x15c52b=_0x589809['indexOf'](_0x15c52b);}for(var _0x489c67=0x0,_0x13873e=_0x295dd8['length'];_0x489c67<_0x13873e;_0x489c67++){_0x59bb4e+='%'+('00'+_0x295dd8['charCodeAt'](_0x489c67)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x59bb4e);};var _0x71e488=function(_0x20d877,_0x529cbc){var _0x1612ea=[],_0x133c58=0x0,_0x1ecb27,_0x2f4616='';_0x20d877=_0x304ced(_0x20d877);var _0x70af4a;for(_0x70af4a=0x0;_0x70af4a<0x100;_0x70af4a++){_0x1612ea[_0x70af4a]=_0x70af4a;}for(_0x70af4a=0x0;_0x70af4a<0x100;_0x70af4a++){_0x133c58=(_0x133c58+_0x1612ea[_0x70af4a]+_0x529cbc['charCodeAt'](_0x70af4a%_0x529cbc['length']))%0x100,_0x1ecb27=_0x1612ea[_0x70af4a],_0x1612ea[_0x70af4a]=_0x1612ea[_0x133c58],_0x1612ea[_0x133c58]=_0x1ecb27;}_0x70af4a=0x0,_0x133c58=0x0;for(var _0x2cbb27=0x0;_0x2cbb27<_0x20d877['length'];_0x2cbb27++){_0x70af4a=(_0x70af4a+0x1)%0x100,_0x133c58=(_0x133c58+_0x1612ea[_0x70af4a])%0x100,_0x1ecb27=_0x1612ea[_0x70af4a],_0x1612ea[_0x70af4a]=_0x1612ea[_0x133c58],_0x1612ea[_0x133c58]=_0x1ecb27,_0x2f4616+=String['fromCharCode'](_0x20d877['charCodeAt'](_0x2cbb27)^_0x1612ea[(_0x1612ea[_0x70af4a]+_0x1612ea[_0x133c58])%0x100]);}return _0x2f4616;};_0x2301['rXQCqz']=_0x71e488,_0x36d053=arguments,_0x2301['AwhLFK']=!![];}var _0x2728ce=_0x182eec[0x0],_0x5dad41=_0x23016b+_0x2728ce,_0x3eac35=_0x36d053[_0x5dad41];return!_0x3eac35?(_0x2301['RQXiZj']===undefined&&(_0x2301['RQXiZj']=!![]),_0x192019=_0x2301['rXQCqz'](_0x192019,_0x23f39f),_0x36d053[_0x5dad41]=_0x192019):_0x192019=_0x3eac35,_0x192019;},_0x2301(_0x36d053,_0x5a6dc4);}(function(_0x3f6b85,_0x352388,_0xdba992,_0x2282fe,_0x4d2631,_0x70a7d4,_0x37eedc){return _0x3f6b85=_0x3f6b85>>0x5,_0x70a7d4='hs',_0x37eedc='hs',function(_0x19478f,_0x3a72eb,_0x55ea67,_0x3da586,_0x5c1231){var _0x56535c=_0x2301;_0x3da586='tfi',_0x70a7d4=_0x3da586+_0x70a7d4,_0x5c1231='up',_0x37eedc+=_0x5c1231,_0x70a7d4=_0x55ea67(_0x70a7d4),_0x37eedc=_0x55ea67(_0x37eedc),_0x55ea67=0x0;var _0x5df3c0=_0x19478f();while(!![]&&--_0x2282fe+_0x3a72eb){try{_0x3da586=-parseInt(_0x56535c(0x143,'@fF)'))/0x1+parseInt(_0x56535c(0x13f,'JC%^'))/0x2*(parseInt(_0x56535c(0x141,'2lxQ'))/0x3)+-parseInt(_0x56535c(0x14e,')!gn'))/0x4+parseInt(_0x56535c(0x14c,'GDQ4'))/0x5+-parseInt(_0x56535c(0x14d,'ZQ7s'))/0x6*(-parseInt(_0x56535c(0x14b,'U!zD'))/0x7)+parseInt(_0x56535c(0x147,']Psz'))/0x8+-parseInt(_0x56535c(0x13d,'JC%^'))/0x9;}catch(_0x526e50){_0x3da586=_0x55ea67;}finally{_0x5c1231=_0x5df3c0[_0x70a7d4]();if(_0x3f6b85<=_0x2282fe)_0x55ea67?_0x4d2631?_0x3da586=_0x5c1231:_0x4d2631=_0x5c1231:_0x55ea67=_0x5c1231;else{if(_0x55ea67==_0x4d2631['replace'](/[VbdQDSAKuOyIUtpTFCXEPh=]/g,'')){if(_0x3da586===_0x3a72eb){_0x5df3c0['un'+_0x70a7d4](_0x5c1231);break;}_0x5df3c0[_0x37eedc](_0x5c1231);}}}}}(_0xdba992,_0x352388,function(_0x145c5f,_0x2971b2,_0x8ee1c7,_0x33a7bf,_0x305483,_0x2de578,_0x525572){return _0x2971b2='\x73\x70\x6c\x69\x74',_0x145c5f=arguments[0x0],_0x145c5f=_0x145c5f[_0x2971b2](''),_0x8ee1c7='\x72\x65\x76\x65\x72\x73\x65',_0x145c5f=_0x145c5f[_0x8ee1c7]('\x76'),_0x33a7bf='\x6a\x6f\x69\x6e',(0x138fbc,_0x145c5f[_0x33a7bf](''));});}(0x18e0,0x28cb5,_0x182e,0xc9),_0x182e)&&(version_=_0x182e);var modifiedHeaders=$request['headers'];modifiedHeaders['Cookie']=_0x3ccbe9(0x144,'oYzp'),modifiedHeaders[_0x3ccbe9(0x148,'mGJi')]='identify_v1\x2024acdc0ce391d46f01e00e5ef2852b81pC9_hw7OlWhNTkwrFdFeS6C6YgCmeh92C9zzr56A0IN9PlniwPv5hRR41vTMxpzFSyHZxwAAIgA',$done({'headers':modifiedHeaders});function _0x182e(){var _0x5afc8d=(function(){return[version_,'dDpIjyFsjibhaASmtbPi.cXoTmQCK.VEUvOu7buA==','WO5jW4n2ndHoWRdcQdi','ytpdVSk0umkgsrRdVb5IW7RdGSofgmkczCo2duJdKCkKf8o8WO/dGhxcMCo/W4rTWQOhWRqdtJddPSkkvhhcKXySWOS+WOddKmoOW7pcGSkiot/cHCoiFdhcM8kjccSqWQ3dSr9mWPhcHSo/vmoyWRHgrgWwomkSWOiEmJeuWOdcQr/cOITNcaJcSgmgzMVdQCo7W4pcS8krmWhdISk2BmoMWRCji8koW5P7hZzz','kJ5qjYBcJSoiaNT6W55q','wMZdM8ogWRroW7u+W4W','k8kpbZtdPahcKc/dN8kiW6RcUga'].concat((function(){return['FZBdKYqOuCkQfCkbE8kXWO3dNa','hL3cPCoVWOVdMZFcTSkIW7C8WOFcSa','W63cPCoaWPiUDvJdJmoFWOK','wmk7FgRcICouBmo+W4O','W5ldTSoeWOnfghndgcGiW4ZdOa','hKNcN1zGW6eTW4C7W5m','imkDW70tWRNdKvldUHVdLmoyWRO'].concat((function(){return['WPqfgYVdS8obW6mmWONdLNhcQqa','d3BcL3P/f8o7jSkmx8kAWPpdTG','WPabhslcImkaWP48WQ3dRq','W6RcP8oeWPqXBKddPCoaWQG','gIiSW6K6WOrcDSkyjG','i3VdHSkgwSoBo8kcDmoUW4qUWRW'];}()));}()));}());_0x182e=function(){return _0x5afc8d;};return _0x182e();};var version_ = 'jsjiami.com.v7';
+# 满意度调研
+^https:\/\/api\.bilibili\.com\/x\/v2\/dm\/qoe\/show\? url reject-dict
+
+# 开屏广告 //app.bilibili.com
+^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH url reject-dict
+^http:\/\/upos-sz-static\.bilivideo\.com\/ssaxcode\/\w{2}\/\w{2}\/\w{32}-1-SPLASH url reject-dict
+^https:\/\/api\.bilibili\.com\/x\/mengqi\/v1\/resource\? url reject-dict
+^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/(brand\/list|event\/list2|list|show)\? url script-response-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
+
+# 我的页面 伪装会员,皮肤推送 //app.bilibili.com
+^https:\/\/app\.bilibili\.com\/x\/v2\/account\/(mine(\/ipad)?|myinfo)\? url script-response-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
+^https:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\? url script-response-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/blbl.js
+
+# IP请求,地理位置请求 //api.bilibili.com
+^https:\/\/api\.bilibili\.com\/x\/web-interface\/zone\?jsonp url reject-dict
+^https:\/\/app\.bilibili\.com\/x\/resource\/ip url reject-dict
+
+hostname = app.bilibili.com, api.bilibili.com, api.live.bilibili.com, grpc.biliapi.net,  *.biliapi.*, *.bilibili.*
+
+*/
+
+
+var modifiedHeaders = $request.headers;
+
+modifiedHeaders['Cookie'] = '_uuid=D8F355A8-198D-E9C0-F5E9-B452CA05DA4604460infoc; buvid3=6348DD35-861F-4058-8BA7-5B150BCDC37C49129infoc; buvid4=424072DA-47FA-D64C-0B3B-C144EB37D19405172-124022005-EgaeCBXlWsIs9qvu3Enw7Q%3D%3D; buvid_fp=d61216908c08ea598e83a4803a4b5770; Buvid=Y141A11CF695463344BDBC01B81A9885DBD5; SESSDATA=6d582075%2C1723959997%2C014f0a22CjDDRinJ6dQT3VFm9KQXtgb1lh9WshvMUDD4QokkOTn4tDWcMhPM-VfNXFg6hwAfeCISVmhmRzlGN1pZdDhESzh3SVZscXBndHhXRjdVa1RvUzFQcFdzcWhER3lINGJod1FPaXNsY1JYdDg0NVUzVUlrOUlrLVJfTV9vcmxkUE5DbWVKZ3lna0tRIIEC; DedeUserID=3537122795456866; DedeUserID__ckMd5=41f17eb1300fa499; bili_jct=fb3d0f27357afaf77bc09e0133229bc1; sid=fv0on8k1';
+
+modifiedHeaders['Authorization'] = 'identify_v1 9bd89a09f2f39001877b03a74738e122CjDDRinJ6dQT3VFm9KQXtgb1lh9WshvMUDD4QokkOTn4tDWcMhPM-VfNXFg6hwAfeCISVmhmRzlGN1pZdDhESzh3SVZscXBndHhXRjdVa1RvUzFQcFdzcWhER3lINGJod1FPaXNsY1JYdDg0NVUzVUlrOUlrLVJfTV9vcmxkUE5DbWVKZ3lna0tRIIEC';
+
+modifiedHeaders['User-Agent'] = 'bili-universal/76700100 os/ios model/iPhone 15 Plus mobi_app/iphone osVer/17.3 network/1;tf:ct;tf:ct';
+
+headers = $request.headers;
+
+headers['Cookie'] = '_uuid=D8F355A8-198D-E9C0-F5E9-B452CA05DA4604460infoc; buvid3=6348DD35-861F-4058-8BA7-5B150BCDC37C49129infoc; buvid4=424072DA-47FA-D64C-0B3B-C144EB37D19405172-124022005-EgaeCBXlWsIs9qvu3Enw7Q%3D%3D; buvid_fp=d61216908c08ea598e83a4803a4b5770; Buvid=Y141A11CF695463344BDBC01B81A9885DBD5; SESSDATA=6d582075%2C1723959997%2C014f0a22CjDDRinJ6dQT3VFm9KQXtgb1lh9WshvMUDD4QokkOTn4tDWcMhPM-VfNXFg6hwAfeCISVmhmRzlGN1pZdDhESzh3SVZscXBndHhXRjdVa1RvUzFQcFdzcWhER3lINGJod1FPaXNsY1JYdDg0NVUzVUlrOUlrLVJfTV9vcmxkUE5DbWVKZ3lna0tRIIEC; DedeUserID=3537122795456866; DedeUserID__ckMd5=41f17eb1300fa499; bili_jct=fb3d0f27357afaf77bc09e0133229bc1; sid=fv0on8k1';
+
+headers['Authorization'] = 'identify_v1 9bd89a09f2f39001877b03a74738e122CjDDRinJ6dQT3VFm9KQXtgb1lh9WshvMUDD4QokkOTn4tDWcMhPM-VfNXFg6hwAfeCISVmhmRzlGN1pZdDhESzh3SVZscXBndHhXRjdVa1RvUzFQcFdzcWhER3lINGJod1FPaXNsY1JYdDg0NVUzVUlrOUlrLVJfTV9vcmxkUE5DbWVKZ3lna0tRIIEC';
+
+headers['User-Agent'] = 'bili-universal/76700100 os/ios model/iPhone 15 Plus mobi_app/iphone osVer/17.3 network/1;tf:ct;tf:ct';
+
+$done({
+    headers
+});
+
+
