@@ -1,6 +1,7 @@
 
 
 /*
+软件源
 [rewrite_local]
 https://app.appds.cn/appstore url script-request-header https://raw.githubusercontent.com/xudondon888/Rewrite/main/appds.js
 
