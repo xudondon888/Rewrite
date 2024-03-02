@@ -1,9 +1,11 @@
 {
-  "name": "Yuheng",
-  "description": "娱乐会员群用,不是作者收集的",
-  "task": [
-"config": "08 25 9-10 * * * https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/imaotai.vip.js, tag= i茅台自动预约, img-url= https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/ae/f4/18/aef41811-955e-e6b0-5d23-6763c2eef1ab/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/144x144.png, enabled=false",
+    "name": "Yuheng",
+    "description": "娱乐会员群用,不是作者收集的",
+    "task": [
+          {
+         "config": "08 25 9-10 * * * https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/imaotai.vip.js, tag= i茅台自动预约, img-url= https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/ae/f4/18/aef41811-955e-e6b0-5d23-6763c2eef1ab/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/144x144.png, enabled=false",
             "addons": "https://raw.githubusercontent.com/xudondon888/Rewrite/main/maotai.conf, tag= i茅台token"
-
-  ]
+        },
+        
+    ]
 }
