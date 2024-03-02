@@ -1,14 +1,9 @@
 {
-    "name": "Yuheng",
-    "description": "方便会员群使用不是作者，不要分享娱乐的",
-
-task": [
-
-   "0 0 9 * * ? https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/imaotai.vip.js, tag= i茅台自动预约, img-url= https://raw.githubusercontent.com/black2c7/TheMagic-Icons/main/Icons/Texon3.png, enabled=true",
-
-  "0 0 9 * * ? https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/moyu.js, tag=摸鱼来了, img-url= https://raw.githubusercontent.com/black2c7/TheMagic-Icons/main/Icons/Texon3.png, enabled=true",
-
-  "0 0 9 * * ? https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/Bdyy/bdyy.js, tag=波点音乐, img-url= https://raw.githubusercontent.com/black2c7/TheMagic-Icons/main/Icons/Texon3.png, enabled=true",
-
-    ]
+  "name": "Yuheng",
+  "description": "娱乐会员群用,不是作者收集的",
+  "task": [
+    "10 8-22/2 * * * https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/imaotai.vip.js, tag= i茅台自动预约, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/caiyun.png, enabled=true",
+    "0 9 */7 * * https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/moyu.js, tag=摸鱼来了, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/epic.png, enabled=true",
+    "0 9 * * * https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/exchange.js, tag=汇率监控, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/exchangerate.png, enabled=true",
+  ]
 }
