@@ -11,7 +11,7 @@
             "addons": "https://raw.githubusercontent.com/xudondon888/Rewrite/main/maotai.conf, tag= i茅台token"
         },
           {
-         "config": "32 8 * * * https://gist.githubusercontent.com/Yuheng0101/ac320a985dae31fe59666c63283477a4/raw/maotai.vip.task.js, tag= 微信茅台预约, img-url= https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/70/a4/56/70a456c9-4df9-3bdb-03b6-ecf99f13e7c1/AppIcon-1x_U007epad-0-10-0-85-220.png/144x144bb.png, enabled=false",
+         "config": "32 8 * * * https://gist.githubusercontent.com/Yuheng0101/ac320a985dae31fe59666c63283477a4/raw/maotai.vip.task.js, tag=茅台预约, img-url=https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/70/a4/56/70a456c9-4df9-3bdb-03b6-ecf99f13e7c1/AppIcon-1x_U007epad-0-10-0-85-220.png/144x144bb.png, enabled=false",
             "addons": "https://raw.githubusercontent.com/xudondon888/Rewrite/main/vxmaotai.conf, tag= 微信茅台token"
         },
     ]
