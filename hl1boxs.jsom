@@ -1,0 +1,48 @@
+{
+  "id": "xudondon",
+  "name": "鲸寻脚本订阅",
+  "author": "@xudondon888",
+  "icon": "https://avatars.githubusercontent.com/u/50571734?s=460&u=808616a26243d457cae2e41ffa728895e1e5ed4b&v=4",
+  "repo": "",
+  "apps": [
+
+  {
+      "id": "xudondon",
+      "name": "汇率监控",
+      "descs_html": [
+        "<p style='margin-left:20px;margin-top:20px;'> 2:ck2...</p>"
+      ],
+
+  "keys": [
+        "CNY",
+        "USD",
+        "HKD",
+        "JPY",
+        "EUR",
+        "GBP", 
+      ],
+
+};
+
+ 
+        {
+          "id": "CNY",
+          "name": "货币",
+          "val": null,
+          "type": "textarea",
+          "rows": 1,
+          "desc": ""
+        },
+   
+   
+      ],
+      "author": "@xudondon888",
+      "repo": "",
+      "icons": [
+        "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/70/a4/56/70a456c9-4df9-3bdb-03b6-ecf99f13e7c1/AppIcon-1x_U007epad-0-10-0-85-220.png/144x144bb.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/70/a4/56/70a456c9-4df9-3bdb-03b6-ecf99f13e7c1/AppIcon-1x_U007epad-0-10-0-85-220.png/144x144bb.png"
+      ],
+      "script": "https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/exchange.js"
+    }
+  ]
+}
