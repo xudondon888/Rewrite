@@ -15,6 +15,8 @@
 * ﻿青青草 VIP卡 https://bit.ly/3TKnE64
 * ﻿•One 一个 VIP 卡 https://onesp.app/
 * ﻿海角社区 视频破解 https://www.haijiao.com/          
+* 香蕉视频 https://ID6CQL.xjxj.one?inviteCode=ID6CQL
+
 
 
 */
@@ -51,7 +53,9 @@
 ^https?:\/\/(jihulab|gitlab)\.com\/ReactJSTeams\/next.js url reject-200
 # 解锁
 ^https:\/\/(pop\.flare\.com\.51kuajing\.net|gameapi\.mma\.dstor\.cc|api\.domain\.(services?|liuniukeji)\.(heshuangde|douyin123)\.(com|cc))\/index.php\/App\/(User\/Info|Index\/Update|Account\/Login) url script-response-body https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/shenhu.vip.js
+
 # 绳师SM
+
 # hostname = *.sssm.info,*.cloudfront.net,*.ddosapi.cyou
 
 ^https?:\/\/.*(sssm|cloudfront|ddosapi).+\/api(\/v1|)\/banners url script-response-body https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/sssm.js
@@ -71,6 +75,7 @@
 # hostname = pwa.gvlan.club, pwa.npxprq.com
 
 ^https?:\/\/pwa\.(gvlan.club|npxprq.com)\/pwa.php\/api\/(mv\/detail|home\/getConfig|community\/post_detail_by_id|users\/getBaseInfo) url script-response-body https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/bluemv.vip.js
+
 # 69萝莉
 
 # hostname = h5x.*.com, h5.9g50rh3.cc, h5.3w01win.cc
@@ -81,8 +86,15 @@
 ^https?:\/\/h5x?\.\w+\.(com|cc)\/h5\/(user\/info|video\/index) url script-response-body https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/69loli.vip.js
 # 解锁
 ^https?:\/\/h5x?\.\w+\.(com|cc)\/h5\/video\/(detail|search) url script-analyze-echo-response https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/69loli.vip.js
+
 # 糖心
 # hostname = txh*.com, txk*.com, tx*.com
 
 ^https?:\/\/tx.*\.com\/h5\/(user\/info|movie\/(block|search)|system\/info)$ url script-response-body https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/tx.vip.js
 ^https?:\/\/tx.*\.com\/h5\/movie\/detail$ url script-analyze-echo-response https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/tx.vip.js
+
+# 香蕉视频
+# hostname = cwt98ehs.*api.cc, cwt98ehs.*.cn
+
+# > 全局净化/解锁VIP视频/解锁视频次数限制/去游戏模块
+^https?:\/\/cwt98ehs\.\w+(api|)\.c(c|n)\/(getGlobalData|(ucp\/|)index|vod\/(show|reqplay)|init|game) url script-response-body https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/xjsp.vip.js
