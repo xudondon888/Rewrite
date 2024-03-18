@@ -85,4 +85,4 @@
 # hostname = txh*.com, txk*.com, tx*.com
 
 ^https?:\/\/tx.*\.com\/h5\/(user\/info|movie\/(block|search)|system\/info)$ url script-response-body https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/tx.vip.js
-^https?:\/\/tx.*\.com\/h5\/movie\/detail$ url script-analyze-echo-response https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/tx.vip.js们
+^https?:\/\/tx.*\.com\/h5\/movie\/detail$ url script-analyze-echo-response https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/tx.vip.js
