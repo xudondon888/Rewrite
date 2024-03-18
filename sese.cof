@@ -1,0 +1,85 @@
+#=============UserScript=============#
+# 项目名称：色色合集
+
+#============【下载链接】==============#
+# 使用声明：会员群大家使用看片，仅限测试和学习，请勿转载与贩卖，下载使用后24小时请删除⚠️⚠️⚠️⚠️⚠️
+
+/*
+
+* 糖心 Vlog 金币卡  https://txh026.com
+* 69 夢莉 金币卡 https://h5x.h569llmd.com/
+* ﻿﻿小蓝视频 金币卡 https://bluemv.tips/
+* ﻿﻿哔咔漫画 金币卡 https://bit.ly/41Ra8Qe
+* ﻿﻿绳师 SM 金币卡 https://bit.ly/3NF7Ldy
+* ﻿﻿神户直播 VIP 卡 https://shenhu.site/
+* ﻿青青草 VIP卡 https://bit.ly/3TKnE64
+* ﻿•One 一个 VIP 卡 https://onesp.app/
+* ﻿海角社区 视频破解 https://www.haijiao.com/*/
+
+# 海角社区
+# hostname = *hj*,*haijiao*
+
+^https?:\/\/.*(haijiao|hj).+api\/(topic\/\d+|attachment|login\/signin|user\/(current|info\/\d+)|banner\/banner_list)$ url script-response-body https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/haijiao.vip.js
+
+# one
+# hostname = api.3459381.com, api.61c76a0.com, api.87735d5.com, api.afe9a49.com, api.c6dd5cc.com, api.2b37894.com, api.35a46dd.com, api.43b8477.com, api.5ce3771.com, api.632d809.com, api.b675211.com, api.a9a2bc4.com, api.8eb269a.com, api.4c86d03.com, api.979bb9e.com, api.988068b.com, api.9cbd862.com, api.c2e777b.com, api.b676039.com, api.ab1e7ee.com
+
+# 去广子
+^https?:\/\/api\.\w+\.com\/v2.5\/(ad\/space|panda\/popup) url reject-200
+# 重写
+^https?:\/\/api\.\w+\.com\/v2.5\/(bootstrap|user\/login|user\/avatarFrame|article\/discovery|navigation) url script-response-body https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/one.vip.js
+# 解锁
+^https?:\/\/api\.\w+\.com\/v2.5\/article\/detail url script-analyze-echo-response https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/one.vip.js
+
+# 青青草视频
+
+# hostname = qqcapi.*.com
+
+# 去广告
+^https?:\/\/qqcapi.*.com\/api\/(promo\/popup|task_ad\/list|operation\/ads|investment|ad\/ad_position_config) url reject-200
+# 解锁
+^https?:\/\/qqcapi.*.com\/api/v\d\/video\/(details|play)\/\d+ url script-analyze-echo-response https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/qqc.vip.js
+# 重写
+^https?:\/\/qqcapi.*.com\/api\/(v2\/bootstrap|module\/list|user\/read|bottom_nav|navs\/top|rich_new\/index|user\/privilege|v3\/shortvideo\/view\/\d+) url script-response-body https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/qqc.vip.js
+# 神户直播
+# hostname = jihulab.com, gitlab.com, gameapi.mma.dstor.cc, pop.flare.com.51kuajing.net, *douyin123*, *heshuangde*,  *liuniukeji*
+
+# 去开屏
+^https?:\/\/(jihulab|gitlab)\.com\/ReactJSTeams\/next.js url reject-200
+# 解锁
+^https:\/\/(pop\.flare\.com\.51kuajing\.net|gameapi\.mma\.dstor\.cc|api\.domain\.(services?|liuniukeji)\.(heshuangde|douyin123)\.(com|cc))\/index.php\/App\/(User\/Info|Index\/Update|Account\/Login) url script-response-body https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/shenhu.vip.js
+# 绳师SM
+# hostname = *.sssm.info,*.cloudfront.net,*.ddosapi.cyou
+
+^https?:\/\/.*(sssm|cloudfront|ddosapi).+\/api(\/v1|)\/banners url script-response-body https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/sssm.js
+^https?:\/\/.*(sssm|cloudfront|ddosapi).+\/api(\/v1|)\/(videos(\/\w+|)\/show|users\/get_profile|get_permission) url script-response-body https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/sssm.vip.js
+
+# 哔咔漫画
+
+# hostname = bkh*.com
+
+# 净化
+^https:\/\/bk[a-z]{1}\d+\.com\/h5\/(system\/info|user\/info|cartoon\/detail|(movie|cartoon|animation)\/block) url script-response-body https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/bika.vip.js
+# 解锁
+^https:\/\/bk[a-z]{1}\d+\.com\/h5\/(movie\/detail|cartoon\/chapter) url script-analyze-echo-response https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/bika.vip.js
+
+# 小蓝视频
+
+# hostname = pwa.gvlan.club, pwa.npxprq.com
+
+^https?:\/\/pwa\.(gvlan.club|npxprq.com)\/pwa.php\/api\/(mv\/detail|home\/getConfig|community\/post_detail_by_id|users\/getBaseInfo) url script-response-body https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/bluemv.vip.js
+# 69萝莉
+
+# hostname = h5x.*.com, h5.9g50rh3.cc, h5.3w01win.cc
+
+# 去倒计时/弹窗
+^https?:\/\/h5x?\.\w+\.(com|cc)\/(|\?page=\d+|null|\?\?channel=.*&userCode=.*)$ url script-response-body https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/69loli.pure.js
+# 去banner
+^https?:\/\/h5x?\.\w+\.(com|cc)\/h5\/(user\/info|video\/index) url script-response-body https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/69loli.vip.js
+# 解锁
+^https?:\/\/h5x?\.\w+\.(com|cc)\/h5\/video\/(detail|search) url script-analyze-echo-response https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/69loli.vip.js
+# 糖心
+# hostname = txh*.com, txk*.com, tx*.com
+
+^https?:\/\/tx.*\.com\/h5\/(user\/info|movie\/(block|search)|system\/info)$ url script-response-body https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/tx.vip.js
+^https?:\/\/tx.*\.com\/h5\/movie\/detail$ url script-analyze-echo-response https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/tx.vip.js
