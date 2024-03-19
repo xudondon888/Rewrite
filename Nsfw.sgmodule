@@ -1,0 +1,13 @@
+#!name=NSFW
+#!Author=Yuheng
+
+[Script]
+
+海角= type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/.*(haijiao|hj).+api\/(topic\/\d+|attachment|login\/signin|user\/(current|info\/\d+)|banner\/banner_list)$, script-path=https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/haijiao.vip.js
+
+香蕉= type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/cwt98ehs\.\w+(api|)\.c(c|n)\/(getGlobalData|(ucp\/|)index|vod\/(show|reqplay)|init|game),script-path=https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/xjsp.vip.js
+
+[MITM]
+
+
+hostname = %APPEND% *hj*, *haijiao*, cwt98ehs.*api.cc, cwt98ehs.*.cn
