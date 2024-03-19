@@ -9,9 +9,9 @@
 
 Oen= type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api\.\w+\.com\/v2.5\/(bootstrap|user\/login|user\/avatarFrame|article\/discovery|navigation),script-path=https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/one.vip.js
 
-青草= type=http-response,requires-body=1,max-size=2,pattern=^https?:\/\/qqcapi.*.com\/api\/(v2\/bootstrap|module\/list|user\/read|bottom_nav|navs\/top|rich_new\/index|user\/privilege|v3\/shortvideo\/view\/\d+),script-path=https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/qqc.vip.js
+青草= type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/qqcapi.*.com\/api\/(v2\/bootstrap|module\/list|user\/read|bottom_nav|navs\/top|rich_new\/index|user\/privilege|v3\/shortvideo\/view\/\d+),script-path=https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/qqc.vip.js
 
-青草= type=http-response,requires-body=2,max-size=0,pattern=^https?:\/\/qqcapi.*.com\/api/v\d\/video\/(details|play)\/\d+,script-path=https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/qqc.vip.js
+青草= type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/qqcapi.*.com\/api/v\d\/video\/(details|play)\/\d+,script-path=https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/qqc.vip.js
 
 
 [MITM]
