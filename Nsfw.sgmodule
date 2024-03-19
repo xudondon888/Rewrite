@@ -1,11 +1,6 @@
 #!name=NSFW
 #!Author=Yuheng
 
-[Map Local]
-
-# 去广告青草
-^https?:\/\/qqcapi.*.com\/api\/(promo\/popup|task_ad\/list|operation\/ads|investment|ad\/ad_position_config) data="https://raw.githubusercontent.com/mieqq/mieqq/master/reject-200.txt"
-
 [Script]
 
 海角= type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/.*(haijiao|hj).+api\/(topic\/\d+|attachment|login\/signin|user\/(current|info\/\d+)|banner\/banner_list)$, script-path=https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/haijiao.vip.js
@@ -19,7 +14,6 @@ Oen= type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api\.\w+\
 青草= type=http-request,requires-body=1,max-size=0,pattern=^https?:\/\/qqcapi.*.com\/api\/(v2\/bootstrap|module\/list|user\/read|bottom_nav|navs\/top|rich_new\/index|user\/privilege|v3\/shortvideo\/view\/\d+),script-path=https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/qqc.vip.js
 
 [MITM]
-
 
 hostname = %APPEND% *hj*, *haijiao*,
  %APPEND% qqcapi.*.com, cwt98ehs.*api.cc, cwt98ehs.*.cn, api.3459381.com, api.61c76a0.com, api.87735d5.com, api.afe9a49.com, api.c6dd5cc.com, api.2b37894.com, api.35a46dd.com, api.43b8477.com, api.5ce3771.com, api.632d809.com, api.b675211.com, api.a9a2bc4.com, api.8eb269a.com, api.4c86d03.com, api.979bb9e.com, api.988068b.com, api.9cbd862.com, api.c2e777b.com, api.b676039.com, api.ab1e7ee.com,
