@@ -7,5 +7,10 @@
 
 青草= type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/qqcapi.*.com\/api\/(v2\/bootstrap|module\/list|user\/read|bottom_nav|navs\/top|rich_new\/index|user\/privilege|v3\/shortvideo\/view\/\d+),script-path=https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/qqc.vip.js
 
+[Map Local]
+
+# 去广告青草
+^https?:\/\/qqcapi.*.com\/api\/(promo\/popup|task_ad\/list|operation\/ads|investment|ad\/ad_position_config) data="https://raw.githubusercontent.com/mieqq/mieqq/master/reject-200.txt"
+
 [MITM]
 hostname = %APPEND% qqcapi.*.com
