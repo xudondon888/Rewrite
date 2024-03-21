@@ -2,7 +2,7 @@
 
 [rewrite_local]
 
-^https:\/\/openmobile\.qq\.com\/oauth2\.0\/ url script-redirect-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/123.js
+^https:\/\/openmobile\.qq\.com\/oauth2\.0\/ url script-analyze-echo-response https://raw.githubusercontent.com/xudondon888/Rewrite/main/123.js
 
 [mitm]
 
