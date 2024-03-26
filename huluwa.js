@@ -1,4 +1,4 @@
-/*
+*
 
 ============
 新联惠购
@@ -49,8 +49,8 @@ async function getWeChatToken() {
     const url = "https://api.weixin.qq.com/cgi-bin/token";
     const params = {
         grant_type: "client_credential",
-        appid: "YOUR_WECHAT_APPID",
-        secret: "YOUR_WECHAT_SECRET"
+        appid: "YOUR_WECHAT_APPID",   // 替换成你的微信appid
+        secret: "YOUR_WECHAT_SECRET"   // 替换成你的微信secret
     };
     const res = await $axios.get(url, { params });
     return res.data.access_token;
@@ -76,6 +76,164 @@ async function getUserInfo(appId, token) {
     return resData;
 }
 
+async function autoSubmit(appId, cookie, token) {
+    try {
+        const userInfo = await getUserInfo(appId, token);
+        if (userInfo.code === 200) {
+            console.log(`用户信息：${JSON.stringify(userInfo.data)}`);
+            sendMessage.push(`用户信息：${JSON.stringify(userInfo.data)}`);
+        } else {
+            console.log(`获取用户信息失败：${userInfo.message}`);
+            sendMessage.push(`获取用户信息失败：${userInfo.message}`);
+            return;
+        }
+
+        const activityInfo = await getChannelActivity(appId, token);
+        if (activityInfo.code === 200) {
+            console.log(`获取渠道活动信息成功：${JSON.stringify(activityInfo.data)}`);
+            sendMessage.push(`获取渠道活动信息成功：${JSON.stringify(activityInfo.data)}`);
+        } else {
+            console.log(`获取渠道活动信息失败：${activityInfo.message}`);
+            sendMessage.push(`获取渠道活动信息失败：${activityInfo.message}`);
+            return;
+        }
+
+        const activityId = activityInfo.data.id;
+        const checkResult = await checkCustomerInQianggou(activityId, appId, token);
+        if (checkResult.code === 200) {
+            console.log(`检查用户抢购状态成功：${JSON.stringify(checkResult.data)}`);
+            sendMessage.push(`检查用户抢购状态成功：${JSON.stringify(checkResult.data)}`);
+        } else {
+            console.log(`检查用户抢购状态失败：${checkResult.message}`);
+            sendMessage.push(`检查用户抢购状态失败：${checkResult.message}`);
+            return;
+        }
+
+        if (!checkResult.data) {
+            const appointResult = await appoint(activityId, appId, token);
+            if (appointResult.code === 200) {
+                console.log(`预约成功：${JSON.stringify(appointResult.data)}`);
+                sendMessage.push(`预约成功：${JSON.stringify(appointResult.data)}`);
+            } else {
+                console.log(`预约失败：${appointResult.message}`);
+                sendMessage.push(`预约失败：${appointResult.message}`);
+            }
+        } else {
+            console.log("用户已预约");
+            sendMessage.push("用户已预约");
+        }
+    } catch (error) {
+        console.log(`运行出错：${error}`);
+        sendMessage.push(`运行出错：${error}`);
+    }
+}
+
+async function checkCustomerInQianggou(activityId, appId, token) {
+    const url = `${HOST}/front-manager/api/customer/promotion/checkCustomerInQianggou`;
+    const method = 'POST';
+    const data = { activityId, appId };
+    const headers = buildHeader(method, url, JSON.stringify(data));
+    headers['X-access-token'] = token;
+
+    const res = await $axios.post(url, data, { headers });
+    return res.data;
+}
+
+async function getChannelActivity(appId, token) {
+    const url = `${HOST}/front-manager/api/customer/promotion
+
+/channelActivity`;
+    const method = 'POST';
+    const data = { appId };
+    const headers = buildHeader(method, url, JSON.stringify(data));
+    headers['X-access-token'] = token;
+
+    const res = await $axios.post(url, data, { headers });
+    return res.data;
+}
+
+async function appoint(activityId, appId, token) {
+    const url = `${HOST}/front-manager/api/customer/promotion/appoint`;
+    const method = 'POST';
+    const data = { activityId, appId };
+    const headers = buildHeader(method, url, JSON.stringify(data));
+    headers['X-access-token'] = token;
+
+    const res = await $axios.post(url, data, { headers });
+    return res.data;
+}
+
+function buildHeader(method, url, body) {
+    const date = new Date().toUTCString();
+    const signStr = `${method}&${encodeURIComponent(url)}&${encodeURIComponent(body)}&${date}`;
+    const sign = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(signStr, SK));
+
+    return {
+        'Content-Type': 'application/json',
+        'X-HMAC-SIGNATURE': sign,
+        'X-HMAC-ACCESS-KEY': AK,
+        'X-HMAC-ALGORITHM': 'hmac-sha256',
+        'X-HMAC-DIGEST': CryptoJS.enc.Base64.stringify(CryptoJS.SHA256(body)),
+        'X-HMAC-Date': date,
+        'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.0.33(0x18000021) NetType/WIFI Language/zh_CN',
+    };
+}
+
+async function getWeChatToken() {
+    const url = "https://api.weixin.qq.com/cgi-bin/token";
+    const params = {
+        grant_type: "client_credential",
+        appid: "YOUR_WECHAT_APPID",   // 替换成你的微信appid
+        secret: "YOUR_WECHAT_SECRET"   // 替换成你的微信secret
+    };
+    const res = await $axios.get(url, { params });
+    return res.data.access_token;
+}
+
+async function getUserInfo(appId, token) {
+    const url = `${HOST}/front-manager/api/customer/queryById/token`;
+    const method = 'POST';
+    const data = { appId };
+    const headers = buildHeader(method, url, JSON.stringify(data));
+    headers['X-access-token'] = token;
+
+    const res = await $axios.post(url, data, { headers });
+    return res.data;
+}
+
+async function checkCustomerInQianggou(activityId, appId, token) {
+    const url = `${HOST}/front-manager/api/customer/promotion/checkCustomerInQianggou`;
+    const method = 'POST';
+    const data = { activityId, appId };
+    const headers = buildHeader(method, url, JSON.stringify(data));
+    headers['X-access-token'] = token;
+
+    const res = await $axios.post(url, data, { headers });
+    return res.data;
+}
+
+async function getChannelActivity(appId, token) {
+    const url = `${HOST}/front-manager/api/customer/promotion/channelActivity`;
+    const method = 'POST';
+    const data = { appId };
+    const headers = buildHeader(method, url, JSON.stringify(data));
+    headers['X-access-token'] = token;
+
+    const res = await $axios.post(url, data, { headers });
+    return res.data;
+}
+
+async function appoint(activityId, appId, token) {
+    const url = `${HOST}/front-manager/api/customer/promotion/appoint`;
+    const method = 'POST';
+    const data = { activityId, appId };
+    const headers = buildHeader(method, url, JSON.stringify(data));
+    headers['X-access-token'] = token;
+
+    const res = await $axios.post(url, data, { headers });
+    return res.data;
+}
+
 function delay(timeout) {
     return new Promise(resolve => setTimeout(resolve, timeout));
 }
@@ -84,7 +242,7 @@ async function main() {
     const wechatToken = await getWeChatToken();
     console.log(`WeChat Token: ${wechatToken}`);
     
-    const XLTH_COOKIE_ARR = 'XLTH_COOKIE'.split('\n');
+    const XLTH_COOKIE_ARR = 'YOUR_COOKIE'.split('\n'); // 替换成你的cookie
     for (let item of XLTH_COOKIE_ARR) {
         const token = wechatToken;
         await autoSubmit(XLTH_APPID, item, token);
@@ -96,153 +254,11 @@ async function main() {
     $done();
 }
 
-async function autoSubmit(appId, token, wechatToken) {
-    let channelId = '';
-    let channelName = '';
-    if (appId === XLTH_APPID) {
-        channelId = '8';
-        channelName = '新联惠购';
-    }
-    // ... (省略其他渠道)
+main().catch((e) => {
+    console.error(e);
+    notify("葫芦娃预约", `出现错误：${e}`);
+});
 
-    try {
-        const res1 = await getUserInfo(appId, token);
-        if (res1.code !== '10000') {
-            console.log(`获取用户信息失败：${res1.message}`);
-            sendMessage.push(`获取用户信息失败：${res1.message}`);
-            return;
-        }
-
-        const realName = res1.data.realName;
-        const phone = res1.data.phone;
-        console.log(`当前用户[${phone}]`);
-        sendMessage.push(`当前用户[${phone}]`);
-
-        const res2 = await getChannelActivity(channelId, token);
-        if (res2.code !== '10000') {
-            console.log(`获取渠道活动信息失败：${res2.message}`);
-            sendMessage.push(`获取渠道活动信息失败：${res2.message}`);
-            return;
-        }
-
-        const activityId = res2.data.id;
-        const activityName = res2.data.name;
-        console.log(`活动名称[${activityName}]`);
-        sendMessage.push(`活动名称[${activityName}]`);
-
-        const res3 = await checkCustomerInQianggou(activityId, channelId, token);
-        if (res3.code !== '10000') {
-            console.log(`检查用户抢购状态失败：${res3.message}`);
-            sendMessage.push(`检查用户抢购状态失败：${res3.message}`);
-            return;
-        }
-
-        const data = res3.data;
-        let message = '用户已经预约成功';
-        if (!data) {
-            message = '用户未预约，正在尝试预约';
-            const res4 = await appoint(activityId, channelId, token);
-            if (res4.code !== '10000') {
-                console.log(`预约失败：${res4.message}`);
-                sendMessage.push(`预约失败：${res4.message}`);
-                return;
-            }
-        }
-        console.log(`预约结果[${message}]`);
-        sendMessage.push(`预约结果[${message}]`);
-    } catch (error) {
-        console.log(`运行异常：${error}`);
-        sendMessage.push(`运行异常：${error}`);
-    }
+function notify(title, message) {
+    $notify(title, "", message);
 }
-
-async function appoint(activityId, channelId, token) {
-    const url = `${HOST}/front-manager/api/customer/promotion/appoint`;
-    const method = 'POST';
-    const data = { activityId, channelId };
-    const headers = buildHeader(method, url, JSON.stringify(data));
-    headers['X-access-token'] = token;
-
-    let resData;
-    await $axios.post(url, data, { headers })
-        .then(res.then(res => {
-            resData = res.data;
-            sendMessage.push(`预约成功：${JSON.stringify(resData)}`);
-        })
-        .catch(err => {
-            resData = err.response.data;
-            sendMessage.push(`预约失败：${JSON.stringify(resData)}`);
-        });
-    return resData;
-}
-
-async function checkCustomerInQianggou(activityId, channelId, token) {
-    const url = `${HOST}/front-manager/api/customer/promotion/checkCustomerInQianggou`;
-    const method = 'POST';
-    const data = { activityId, channelId };
-    const headers = buildHeader(method, url, JSON.stringify(data));
-    headers['X-access-token'] = token;
-
-    let resData;
-    await $axios.post(url, data, { headers })
-        .then(res => {
-            resData = res.data;
-            sendMessage.push(`检查用户抢购状态成功：${JSON.stringify(resData)}`);
-        })
-        .catch(err => {
-            resData = err.response.data;
-            sendMessage.push(`检查用户抢购状态失败：${JSON.stringify(resData)}`);
-        });
-    return resData;
-}
-
-async function getChannelActivity(channelId, token) {
-    const url = `${HOST}/front-manager/api/customer/promotion/getChannelActivity`;
-    const method = 'POST';
-    const data = { channelId };
-    const headers = buildHeader(method, url, JSON.stringify(data));
-    headers['X-access-token'] = token;
-
-    let resData;
-    await $axios.post(url, data, { headers })
-        .then(res => {
-            resData = res.data;
-            sendMessage.push(`获取渠道活动信息成功：${JSON.stringify(resData)}`);
-        })
-        .catch(err => {
-            resData = err.response.data;
-            sendMessage.push(`获取渠道活动信息失败：${JSON.stringify(resData)}`);
-        });
-    return resData;
-}
-
-function buildHeader(method, url, body) {
-    const date = new Date().toUTCString();
-    const signature = calculateSignature(method, url, AK, SK, date);
-    const digest = calculateDigest(body, SK);
-    const headers = {
-        'Content-Type': 'application/json',
-        'X-date': date,
-        'Authorization': `hmac id="${AK}", algorithm="hmac-sha1", headers="X-date", signature="${signature}"`
-    };
-    return headers;
-}
-
-function calculateSignature(method, url, ak, sk, date) {
-    const crypto = require('crypto');
-    const hmac = crypto.createHmac('sha1', sk);
-    const str = `${method}\n${url}\n${date}`;
-    hmac.update(str);
-    return hmac.digest('base64');
-}
-
-function calculateDigest(body, sk) {
-    const crypto = require('crypto');
-    const hmac = crypto.createHmac('sha1', sk);
-    hmac.update(body);
-    return hmac.digest('hex');
-}
-
-(async () => {
-    await main();
-})();
