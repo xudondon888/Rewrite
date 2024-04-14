@@ -1,5 +1,5 @@
 #!name=Task
-#!desc=手机互联网大佬的,然后是方便Loon使用数据迁移不用麻烦转换🙏大佬的付出。
+#!desc=数据互联网大佬的,然后是方便Loon使用数据迁移不用麻烦转换🙏大佬的付出获取cookie后把cron脚本拉去本地就可以。
 
 [Script]
 
@@ -19,7 +19,7 @@ http-request ^https?:\/\/gw2c\-hw\-open\.longfor\.com\/lmarketing\-task\-api\-mv
 
 cron "30 9 * * *" script-path=https://raw.githubusercontent.com/leiyiyan/resource/main/script/lhtj/lhtj.js, timeout=60, tag=龙湖天街签到
 
-cron "0 10 * * *" script-path=https://gist.githubusercontent.com/Sliverkiss/df5dbbf01bc3acc3bccaf7880acd242b/raw/yht.js, timeout=300, tag=🥤益禾堂小程序签到
+cron "0 10 * * *" script-path=https://gist.githubusercontent.com/Sliverkiss/df5dbbf01bc3acc3bccaf7880acd242b/raw/yht.js, timeout=300, tag=益禾堂小程序签到
 
 http-request ^https:\/\/(webapi|qmwebapi)\.qmai\.cn\/web\/(catering|catering2-apiserver)\/crm\/points-info script-path=https://gist.githubusercontent.com/Sliverkiss/df5dbbf01bc3acc3bccaf7880acd242b/raw/yht.js, timeout=10, tag=益禾堂获取cookie
 
@@ -44,7 +44,6 @@ http-request ^https?:\/\/m.bilibili.com/$ script-path=https://raw.githubusercont
 
 cron "0 10 * * *" script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/BiliBili.js, timeout=300, tag=哔哩哔哩
 
-
 http-request ^https?:\/\/xmc\.ximalaya\.com\/xmlymain-login-web\/login\/ script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/xmlySign.js, timeout=60, tag=喜马拉雅 cookie
 
 cron "0 10 * * *" script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/xmlySign.js, timeout=300, tag=喜马拉雅签到
@@ -64,7 +63,7 @@ http-request ^https:\/\/(webapi|qmwebapi)\.qmai\.cn\/web\/(catering|catering2-ap
 
 cron "0 7,11,17 * * *" script-path=https://gist.githubusercontent.com/Sliverkiss/33800a98dcd029ba09f8b6fc6f0f5162/raw/aliyun.js, timeout=60, tag=阿里云签到
 
-http-request ^https:\/\/(auth|aliyundrive)\.alipan\.com\/v2\/account\/token script-path=https://gist.githubusercontent.com/Sliverkiss/33800a98dcd029ba09f8b6fc6f0f5162/raw/aliyun.js, requires-body=true, timeout=60, tag=
+http-request ^https:\/\/(auth|aliyundrive)\.alipan\.com\/v2\/account\/token script-path= https://gist.githubusercontent.com/Sliverkiss/33800a98dcd029ba09f8b6fc6f0f5162/raw/aliyun.js, requires-body=true, timeout=60, tag=
 阿里云签到Cookie
 
 http-response https://app.moutai519.com.cn/xhr/front/user/info script-path=https://gist.githubusercontent.com/Yuheng0101/71bf245d9cf06f4dde9465554697ea9c/raw/imaotai.vip.js, requires-body=true, timeout=60, tag=i茅台预约Cookie
