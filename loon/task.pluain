@@ -27,7 +27,6 @@ http-request ^https?:\/\/passport\.iqiyi\.com\/apis\/user\/ script-path=https://
 
 cron "0 10 * * *" script-path= https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/iQIYI.js, timeout=300, tag=爱奇艺签到
 
-
 http-request ^https?:\/\/www\.52pojie\.cn\/home\.php\? script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/52pojie.js, timeout=60, tag=吾爱破解 cookie
 
 cron "0 10 * * *" script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/52pojie.js, timeout=300, tag=吾爱破解签到
