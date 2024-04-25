@@ -2,14 +2,15 @@
 ------------------------------------------
 @Author: Sliverkiss
 @Date: 2023.11.30 19:08:18
+@Description: 蜜雪冰城 每日签到、访问雪王铺
 ------------------------------------------
 
-优化Loon适配删除多账号适配
+2024.03.29 重构代码，支持多账号，增加雪王铺任务。更改ck格式,需要清空变量重新获取.
 
-微信：打开蜜雪冰城小程序，进入我的页面.
+重写：打开蜜雪冰城小程序，进入我的页面.
 
 [Script]
-http-response ^https:\/\/mxsa\.mxbc\.net\/api\/v1\/customer\/info script-path=https://gist.githubusercontent.com/Sliverkiss/865c82e42a5730bb696f6700ebb94cee/raw/mxbc.js, requires-body=true, timeout=60, tag=蜜雪冰城token
+http-response ^https:\/\/mxsa\.mxbc\.net\/api\/v1\/customer\/info script-path=https://gist.githubusercontent.com/Sliverkiss/865c82e42a5730bb696f6700ebb94cee/raw/mxbc.js, requires-body=true, timeout=60, tag=蜜雪冰城获取token
 
 [MITM]
 hostname = mxsa.mxbc.net
@@ -83,6 +84,8 @@ async function main() {
                 let { userName, point: pointE } = await getUserInfo();
                 $.title = `本次运行共获得${pointE - 0 - pointF}雪王币`
                 DoubleLog(`「${userName}」当前余额为${pointE}雪王币`);
+            } else {
+                DoubleLog(`⛔️ 「${user.userName ?? `账号${index}`}」check ck error!`)
             }
             //notify
             await sendMsg($.notifyMsg.join("\n"));
@@ -92,6 +95,7 @@ async function main() {
     }
 }
 //签到
+
 async function signin() {
     try {
         let timestamp = ts13();
@@ -110,10 +114,10 @@ async function signin() {
         $.log(`${$.doFlag[res?.code == 0]} 签到:${signMsg}`);
         return signMsg;
     } catch (e) {
-        $.ckStatus = false;
         $.log(`⛔️ 签到:${e}`);
     }
 }
+
 //查询用户信息
 async function getUserInfo() {
     try {
@@ -214,29 +218,29 @@ async function activityIndex() {
 //会员抽奖
 
 //获取Cookie
-function getCookie(cookieName) {
-    // 实现获取 cookie 的逻辑
-}
-
-async function activityIndex() {
+async function getCookie() {
     try {
-        const opts = {
-            url: "https://76177.activity-12.m.duiba.com.cn/chome/index",
-            params: {
-                from: "login",
-                spm: "76177.1.1.1"
-            },
-            headers: {
-                'Cookie': getCookie('yourCookieName'), // 使用 getCookie 函数获取 cookie
-                'Host': `76177.activity-12.m.duiba.com.cn`,
-                'User-Agent': `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X)mxsa_mxbc`,
-            }
+        if ($request && $request.method === 'OPTIONS') return;
+
+        const header = ObjectKeys2LowerCase($request.headers) ?? {};
+        const body = $.toObj($response.body);
+        const token = header['access-token'];
+        if (!(token && body)) throw new Error("get token error,the value is empty");
+
+        const newData = {
+            "userId": body?.data?.mobilePhone,
+            "token": token,
+            "userName": body?.data?.mobilePhone,
         }
-        let res = await fetch(opts);
-        if (res.match(/请重新登陆/)) throw new Error(`不存在可用session`);
-        $.log(`✅ 访问雪王铺:调用成功!`);
+
+        const index = userCookie.findIndex(e => e.userId == newData.userId);
+        userCookie[index] ? userCookie[index] = newData : userCookie.push(newData);
+
+        $.setjson(userCookie, ckName);
+        $.msg($.name, `🎉${newData.userName}更新token成功!`, ``);
+
     } catch (e) {
-        $.log(`⛔️ 访问雪王铺:调用失败!${e}`);
+        throw e;
     }
 }
 
