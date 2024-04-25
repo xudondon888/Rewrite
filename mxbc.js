@@ -2,15 +2,14 @@
 ------------------------------------------
 @Author: Sliverkiss
 @Date: 2023.11.30 19:08:18
-@Description: 蜜雪冰城 每日签到、访问雪王铺
 ------------------------------------------
 
-2024.03.29 重构代码，支持多账号，增加雪王铺任务。更改ck格式,需要清空变量重新获取.
+优化Loon适配删除多账号适配
 
-重写：打开蜜雪冰城小程序，进入我的页面.
+微信：打开蜜雪冰城小程序，进入我的页面.
 
 [Script]
-http-response ^https:\/\/mxsa\.mxbc\.net\/api\/v1\/customer\/info script-path=https://gist.githubusercontent.com/Sliverkiss/865c82e42a5730bb696f6700ebb94cee/raw/mxbc.js, requires-body=true, timeout=60, tag=蜜雪冰城获取token
+http-response ^https:\/\/mxsa\.mxbc\.net\/api\/v1\/customer\/info script-path=https://gist.githubusercontent.com/Sliverkiss/865c82e42a5730bb696f6700ebb94cee/raw/mxbc.js, requires-body=true, timeout=60, tag=蜜雪冰城token
 
 [MITM]
 hostname = mxsa.mxbc.net
@@ -215,29 +214,24 @@ async function activityIndex() {
 //会员抽奖
 
 //获取Cookie
-async function getCookie() {
+async function activityIndex() {
     try {
-        if ($request && $request.method === 'OPTIONS') return;
-
-        const header = ObjectKeys2LowerCase($request.headers) ?? {};
-        const body = $.toObj($response.body);
-        const token = header['access-token'];
-        if (!(token && body)) throw new Error("get token error,the value is empty");
-
-        const newData = {
-            "userId": body?.data?.mobilePhone,
-            "token": token,
-            "userName": body?.data?.mobilePhone,
+        const opts = {
+            url: "https://76177.activity-12.m.duiba.com.cn/chome/index",
+            params: {
+                from: "login",
+                spm: "76177.1.1.1"
+            },
+            headers: {
+                'Host': `76177.activity-12.m.duiba.com.cn`,
+                'User-Agent': `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X)mxsa_mxbc`,
+            }
         }
-
-        const index = userCookie.findIndex(e => e.userId == newData.userId);
-        userCookie[index] ? userCookie[index] = newData : userCookie.push(newData);
-
-        $.setjson(userCookie, ckName);
-        $.msg($.name, `🎉${newData.userName}更新token成功!`, ``);
-
+        let res = await fetch(opts);
+        if (res.match(/请重新登陆/)) throw new Error(`不存在可用session`);
+        $.log(`✅ 访问雪王铺:调用成功!`);
     } catch (e) {
-        throw e;
+        $.log(`⛔️ 访问雪王铺:调用失败!${e}`);
     }
 }
 
