@@ -1,0 +1,9 @@
+#!name=蜜雪冰城签到
+
+[Script]
+cron "0 10 * * *" script-path=https://raw.githubusercontent.com/xudondon888/Rewrite/main/mxbc.js, timeout=300, tag=蜜雪冰城
+
+http-response ^https:\/\/mxsa\.mxbc\.net\/api\/v1\/customer\/info script-path=https://raw.githubusercontent.com/xudondon888/Rewrite/main/mxbc.js, requires-body=true, timeout=60, tag=蜜雪冰城获取token
+
+[MITM]
+hostname = mxsa.mxbc.net
