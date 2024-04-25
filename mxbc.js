@@ -214,6 +214,10 @@ async function activityIndex() {
 //会员抽奖
 
 //获取Cookie
+function getCookie(cookieName) {
+    // 实现获取 cookie 的逻辑
+}
+
 async function activityIndex() {
     try {
         const opts = {
@@ -223,6 +227,7 @@ async function activityIndex() {
                 spm: "76177.1.1.1"
             },
             headers: {
+                'Cookie': getCookie('yourCookieName'), // 使用 getCookie 函数获取 cookie
                 'Host': `76177.activity-12.m.duiba.com.cn`,
                 'User-Agent': `Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X)mxsa_mxbc`,
             }
