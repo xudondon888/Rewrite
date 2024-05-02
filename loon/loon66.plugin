@@ -1,0 +1,15 @@
+#!name = yqc-premium专享 插件仓库
+#!desc = 一站式插件仓库任君选择，一键安装，方便快捷。
+#!openUrl = https://🔥🔥🔥🔥.com
+#!author = 教程预览
+#!homepage = https://t.me/c/2107874396/10
+#!icon = https://raw.githubusercontent.com/Yuheng0101/X/main/Assets/channel.jpg
+#!date = 2024-05-02 
+
+
+
+[Script]
+http-request ^https?:\/\/xn--ck8h\.com script-path = https://raw.githubusercontent.com/xudondon888/Rewrite/main/loon/loon.js, requires-body = true, timeout = 120, tag = yqc-premium插件仓库
+
+[Mitm]
+hostname = xn--ck8h.com
