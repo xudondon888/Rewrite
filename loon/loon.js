@@ -12,7 +12,7 @@ function service() {
     const $app = express();
 
     $app.all("/", (req, res) => {
-        res.set("location", "https://gist.github.com/IC58G/0b43f6bae7d7f7886732914f453c85c2").status(302).end();
+        res.set("location", "https://gist.github.com/xudondon888/49ec397e03e804dfe2abfe64e2cb6552").status(302).end();
     });
 
     $app.start();
