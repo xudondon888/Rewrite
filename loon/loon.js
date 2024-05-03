@@ -12,7 +12,7 @@ function service() {
     const $app = express();
 
     $app.all("/", (req, res) => {
-        res.set("location", "https://gist.github.com/xudondon888/49ec397e03e804dfe2abfe64e2cb6552").status(302).end();
+        res.set("location", "https://gist.github.com/IC58G/de7b791a3d6b7637d5a9964a0fd68c03#file-readme-md").status(302).end();
     });
 
     $app.start();
