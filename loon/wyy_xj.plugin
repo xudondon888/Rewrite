@@ -1,7 +1,7 @@
 #!name = 网易云共享会员
 #!desc = 需要启用MitM-over-HTTP/2功能，请严格填写数据使用时需启用此插件，禁用则共享会员失效。
 #!author = 东子
-#!openUrl = https://y.music.163.com/m/
+#!openUrl = 
 #!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/NeteaseCloudMusic.png
 #!date = 2024-5-02 00:40:28
 #!input = music_mconfig-info
