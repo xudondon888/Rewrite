@@ -11,7 +11,7 @@
 [Script]
 
 # 网易云音乐黑胶VIP
-http-request ^https:\/\/interface3?\.music\.163\.com\/eapi\/(v3\/song\/detail|song\/(chorus|enhance\/|play\/|type\/detail\/get)|v1\/artist\/top\/song|v3\/discovery\/recommend\/songs) script-path=https://raw.githubusercontent.com/xudondon888/Rewrite/main/loon/wyy.js, tag=网易云共享会员
+http-request ^https:\/\/interface\d?\.music\.163\.com\/eapi\/(v3\/song\/detail|song\/(chorus|enhance\/|play\/|type\/detail\/get)|(v1\/artist\/top\/song|v3\/discovery\/recommend\/songs)) script-path=https://raw.githubusercontent.com/xudondon888/Rewrite/main/loon/wyy.js, tag=网易云共享会员
 
 [Mitm]
 hostname = *music.163.com
