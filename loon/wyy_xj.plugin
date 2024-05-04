@@ -1,5 +1,5 @@
 #!name = 网易云共享会员
-#!desc = 需要启用MitM-over-HTTP/2功能，请严格填写数据使用时需启用此插件，禁用则共享会员失效。
+#!desc = 需要启用MitM-over-HTTP/2功能，请严格填写数据使用时需启用此插件，数据填写到配置和名称一样，禁用则共享会员失效！
 #!author = 东子
 #!openUrl = 
 #!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/NeteaseCloudMusic.png
