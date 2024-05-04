@@ -1,0 +1,17 @@
+#!name = 网易云共享会员
+#!desc = 需要启用MitM-over-HTTP/2功能，请严格填写数据使用时需启用此插件，禁用则共享会员失效。
+#!author = 东子
+#!openUrl = https://y.music.163.com/m/
+#!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/NeteaseCloudMusic.png
+#!date = 2024-5-02 00:40:28
+#!input = music_mconfig-info
+#!input = music_user-agent
+#!input = music_cookie
+
+[Script]
+
+# 网易云音乐黑胶VIP
+http-request ^https:\/\/interface3?\.music\.163\.com\/eapi\/(playermode\/|search\/complex\/(page|rec\/song\/get)|v3\/song\/detail|song\/(chorus|enhance\/|play\/|type\/detail\/get)|vipnewcenter\/app\/resource\/newaccountpage|(homepage\/|v6\/)?playlist\/|vipauth\/app\/auth\/(soundquality\/)?query|api\/app-api\/auth\/(groupImageValidate|validate|validateAudioAuth)) script-path=https://raw.githubusercontent.com/xudondon888/Rewrite/main/loon/wyy.js, tag=网易云共享会员
+
+[Mitm]
+hostname = *music.163.com
