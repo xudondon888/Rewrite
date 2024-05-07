@@ -1,17 +1,7 @@
-var headers = $request.headers;
-
-var ck = $persistentStore.read("Bilibili__Cookie");
-var au = $persistentStore.read("Bilibili__ Authorization");
-
-if (headers['Cookie'] != undefined) {
-    headers['Cookie'] = ck;
-} else {
-    headers['cookie'] = ck;
-}
-if (headers['Authorization'] != undefined) {
-    headers['Authorization'] = au;
-} else {
-    headers['authorization'] = au;
-}
-
+var headers = $request['headers'];
+delete headers["Authorization"];
+delete headers["Cookie"];
+// headers['buvid'] = $persistentStore.read("Bilibili_buvid");
+headers['authorization'] = $persistentStore.read("Bilibili_Authorization");
+headers['user-agent'] = $persistentStore.read("Bilibili_Cookie");
 $done({ 'headers': headers });
