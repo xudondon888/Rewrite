@@ -1,0 +1,12 @@
+#!name = Bilibili共享会员
+#!author = 东子
+#!icon = https://gitlab.com/isous/loonresource/-/raw/main/Icon/Bilibili.png
+#!date = 2024-5-08
+#!input = Bilibili_Authorization
+#!input = Bilibili_Cookie
+[Script]
+
+http-request (https?:\/\/.*bili.*\/bilibili\.app\.playerunite\.v1\.Player\/PlayViewUnite|^http[s]?:\/\/((app|api)\.(\w{2,15})?\.(com|cn)).*player\.(v3|v2|v1).Play(URL|View).*) script-path=https://raw.githubusercontent.com/xudondon888/Rewrite/main/loon/bili.js, tag= Bilibili Crack
+
+[MITM]
+hostname = *.bilibili.*
