@@ -1,0 +1,42 @@
+#!name=喜马拉雅
+#!desc= 解锁VIP(包括儿童)资源, 去除显而易见的广告 [建议搭配其他去广告规则使用]
+#!icon=https://raw.githubusercontent.com/anker1209/icon/main/xmly.png
+
+[Rewrite]
+# > 去广告
+^https?:\/\/ad.*\.xima.*\.com - reject
+# > 莫名收集
+^https?:\/\/.+\.xima.*\.com\/collector\/xl\/v\d - reject
+# > 位置信息
+^https?:\/\/.+\.xima.*\.com\/mobile\/discovery\/v\d\/location - reject
+
+[Script]
+# > 顶部tab优化
+http-response ^https?:\/\/.+\.xima.*\.com\/discovery-category\/customCategories script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/XMLY/xmly.js, requires-body=true, timeout=60, tag=xmly.vip
+
+# > 详情页底部推荐广告
+http-response ^https?:\/\/.+\.xima.*\.com\/mobile-playpage\/playpage\/recommendContentV2 script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/XMLY/xmly.js, requires-body=true, timeout=60, tag=xmly.vip
+
+# > 首页横幅
+http-response ^https?:\/\/.+\.xima.*\.com\/focus-mobile\/focusPic script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/XMLY/xmly.js, requires-body=true, timeout=60, tag=xmly.vip
+
+# > 顶部banner过滤广告
+http-response ^https?:\/\/.+\.xima.*\.com\/mobile-category\/v1\/category\/page\/queryCategoryPageData script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/XMLY/xmly.js, requires-body=true, timeout=60, tag=xmly.vip
+
+# > 个人中心
+http-response ^https?:\/\/.+\.xima.*\.com\/mobile-user\/v2\/homePage script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/XMLY/xmly.js, requires-body=true, timeout=60, tag=xmly.vip
+
+# > 列表解锁
+http-response ^https?:\/\/.+\.xima.*\.com\/(product\/detail\/v1|mobile\/v1\/album\/track) script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/XMLY/xmly.js, requires-body=true, timeout=60, tag=xmly.vip
+
+# > 音质解锁
+http-response ^https?:\/\/.+\.xima.*\.com\/mobile-playpage\/playpage\/track\/qualityAndEffect script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/XMLY/xmly.js, requires-body=true, timeout=60, tag=xmly.vip
+
+# > 播放按钮解锁
+http-response ^https?:\/\/.+\.xima.*\.com\/mobile-playpage\/playpage\/tabs\/v2 script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/XMLY/xmly.js, requires-body=true, timeout=60, tag=xmly.vip
+
+# > 详情页会员媒体解锁（不包含付费）
+http-response ^https?:\/\/.+\.xima.*\.com\/(mobile-playpage\/track|mobile\/quickplay) script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/XMLY/xmly.js, requires-body=true, timeout=60, tag=xmly.vip
+
+[MITM]
+hostname = mobile*.xima*.com, ad*.ximalaya.com, *.xima*.com, 61.172.194.*, 180.153.*.*, 180.153.255.*, 180.153.140.*, 180.153.250.*, 114.80.99.*, 114.80.139.2*, 61.162.174.*, 119.188.123.*, 59.83.227.*, 114.80.161.29, 1.62.62.64, 1.194.255.171, 23.236.99.89, 36.99.200.135, 42.81.4.198, 42.81.26.128, 42.81.120.58, 43.152.24.12, 43.152.24.18, 43.152.25.127, 43.152.29.38, 43.175.16.34, 43.175.22.25, 43.175.44.15, 49.7.69.197, 49.51.224.95, 101.33.11.32, 101.33.11.106, 101.33.20.34, 101.33.29.110, 103.105.60.99, 140.249.84.135, 140.249.85.189, 150.109.90.80, 150.109.91.35, 150.138.47.94, 150.138.136.145, 203.205.13*.*, 203.205.250.*, 211.152.137.*, 47.100.227.85, 61.164.145.12, 106.41.204.126, 112.80.180.72, 112.98.170.228, 112.99.146.108, 118.25.119.177, 223.111.231.198, 120.22*.2*.*, 43.132.8*.*, 101.33.27.*, 43.141.11.*
