@@ -1,0 +1,10 @@
+#!name = ikf去广告
+#!desc = 过滤开屏广告
+#!icon = https://github.com/xudondon888/Rewrite/blob/main/iKF-Icon.png
+
+[Rewrite]
+
+http-response ^https?:\/\/img\.keepfun\.com\/cms script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/replace-body.js, requires-body=true, timeout=30,argument=offset_ms%22%3A%5Cd%2B-%3Eoffset_ms%22%3A99999999999999
+
+[Mitm]
+hostname = img.ikeepfun.com
