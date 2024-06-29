@@ -70,5 +70,5 @@ if ($request.url.includes("/business-vip-level-h5-web/api/profile")) {
 }
 
 // 完成处理请求
-$done({ headers: header });
 
+$done({ url: $request.url, headers: $request.headers, body: $request.body })
