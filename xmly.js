@@ -7,7 +7,7 @@
 
 [rewrite_local]
 
- ^https?:\/\/.+\.xima.*\.com\/(mobile-user\/v2\/homePage|product\/detail\/v1|mobile\/v1\/album\/track|mobile-playpage\/playpage\/track\/qualityAndEffect|mobile-playpage\/playpage\/tabs\/v2|mobile-playpage\/track|mobile\/quickplay) url script-response-body https://gist.githubusercontent.com/xudondon888/a3adac392028c194eac9b1b6eb3ed953/raw/470c233f9d8277be997d5e92a6a1057cc993eaac/gistfile1.js
+ ^https?:\/\/.+\.xima.*\.com\/(mobile-user\/v2\/homePage|product\/detail\/v1|mobile\/v1\/album\/track|mobile-playpage\/playpage\/track\/qualityAndEffect|mobile-playpage\/playpage\/tabs\/v2|mobile-playpage\/track|mobile\/quickplay) url script-response-body https://raw.githubusercontent.com/xudondon888/Rewrite/main/xmly.js
 
 [mitm]
 
