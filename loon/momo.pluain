@@ -1,0 +1,14 @@
+
+#!name = 陌陌科技去广告
+#!desc = 移除开屏广告、各类弹窗、悬浮窗、各类横幅广告、信息流广告。
+#!icon = https://raw.githubusercontent.com/xudondon888/lcon/%E4%B8%BB%E8%A6%81/%E9%99%8C%E9%99%8C%E6%9E%81%E9%80%9F%E7%89%88%E2%80%94%E7%9B%B4%E6%92%AD%E8%81%8A%E5%A4%A9%E8%A7%86%E9%A2%91%E4%BA%A4%E5%8F%8B-Icon.png
+
+[Rewrite]
+
+# 陌陌
+^https?:\/\/open\.taou\.com\/maimai\/launch_ad reject-dict
+^https?:\/\/api\.taou\.com\/sdk\/global\/splash_ad reject-dict
+^https?:\/\/track\.mm\.taou\.com/v\d\/track reject-dict
+
+[MITM]
+hostname = open.taou.com, api.taou.com, track.mm.taou.com
