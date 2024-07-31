@@ -6,10 +6,8 @@
 [Rewrite]
 
 # 陌陌
-^https?:\/\/open\.taou\.com\/maimai\/launch_ad
-reject-dict
-^https?:\/\/api\.taou\.com\/sdk\/global\/splash_ad reject-dict
-^https?:\/\/track\.mm\.taou\.com/v\d\/track
+
+^https?:\/\/(?:open\.taou\.com\/maimai\/launch_ad|api\.taou\.com\/sdk\/global\/splash_ad|track\.mm\.taou\.com\/v\d\/track)
 reject-dict
 
 [MITM]
