@@ -19,11 +19,6 @@
 
 # 应用 插件 配置
 
-| 插件/应用 | 软件 | 气球脚本 |
-
-|-----------|------|--------------|
-
-| 百词斩 | <p align="center">
-<img src="https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/lige47/spotify(green).png" width="50"></img> |
- [安装插件](https://www.nsloon.com/openloon/import?plugin=https://gist.githubusercontent.com/IC58G/770ac896f0b0ec89cdb9b91ccd8cf426/raw/bcz.plugin) |
-
+ 百词斩  <p align="center">
+<img src="https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/lige47/spotify(green).png" width="50"></img> 
+ [安装插件](https://www.nsloon.com/openloon/import?plugin=https://gist.githubusercontent.com/IC58G/770ac896f0b0ec89cdb9b91ccd8cf426/raw/bcz.plugin) 
