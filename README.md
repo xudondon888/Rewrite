@@ -1,4 +1,1 @@
-<p align="center">
-<img src="https://raw.githubusercontent.com/xudondon888/lcon/%E4%B8%BB%E8%A6%81/loon/IMG_1113.jpg" width="400"></img>
-<img src="https://raw.githubusercontent.com/xudondon888/lcon/%E4%B8%BB%E8%A6%81/loon/IMG_1112.PNG" width="400"></img>
-</p>
+<img src="https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/lige47/spotify(green).png" width="30"></img> | [<img src="https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/Loon.png" width="20"></img>](https://www.nsloon.com/openloon/import?plugin=https://gist.githubusercontent.com/IC58G/71ce2555c90717c71882bc4f9f233320/raw/Unlock-R.plugin) | 百词斩 |
