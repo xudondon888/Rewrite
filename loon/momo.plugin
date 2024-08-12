@@ -2,10 +2,30 @@
 #!desc = 移除开屏广告、各类弹窗、悬浮窗、各类横幅广告、信息流广告。
 #!icon = https://raw.githubusercontent.com/xudondon888/lcon/%E4%B8%BB%E8%A6%81/%E9%99%8C%E9%99%8C%E6%9E%81%E9%80%9F%E7%89%88%E2%80%94%E7%9B%B4%E6%92%AD%E8%81%8A%E5%A4%A9%E8%A7%86%E9%A2%91%E4%BA%A4%E5%8F%8B-Icon.png
 
+[Rule]
+# MoMo
+#DOMAIN-SUFFIX,fep.hellogroup.com,REJECT
+DOMAIN-SUFFIX,pgdt.ugdtimg.com,REJECT
+DOMAIN-SUFFIX,i.kejet.net,REJECT
+
+# Taobao
+DOMAIN-SUFFIX,wcp.taobao.com,REJECT
+
 [Rewrite]
+# MoMo
+^http:\/\/img\.momocdn\.com\/bannerc\/.*$ reject
+^http:\/\/img\.momocdn\.com\/homepagevideo\/.*$ reject
+^https:\/\/g\.immomo\.com\/fep\/momo.*$ reject
 
-# 陌陌
-^https?:\/\/(?:open\.taou\.com\/maimai\/launch_ad|api\.taou\.com\/sdk\/global\/splash_ad|track\.mm\.taou\.com\/v\d+\/track) - reject
+# Taobao
+^https:\/\/wcp\.taobao\.com\/adstrack\/track\.json.*$ reject
 
-[MITM]
-hostname = open.taou.com, api.taou.com, track.mm.taou.com
+# Custom MoMo URL Rejection
+^https:\/\/i\.kejet\.net\/u\/mm\/r\?.*id=\d+-\d+-\d+-\d+_wm_\d+-\d+_\d+-\d+_.*$,reject
+
+
+^https:\/\/fep\.hellogroup\.com\/v4\/config\/ext\/batchRecommend\/.*$ reject
+
+[Mitm]
+hostname = i.kejet.net, img.immomo.com, wcp.taobao.com, fep.hellogroup.com
+  
