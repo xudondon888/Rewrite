@@ -4,29 +4,25 @@
 
 [Rule]
 # MoMo
-#DOMAIN-SUFFIX,fep.hellogroup.com,REJECT
 DOMAIN-SUFFIX,pgdt.ugdtimg.com,REJECT
 DOMAIN-SUFFIX,i.kejet.net,REJECT
 
 # Taobao
 DOMAIN-SUFFIX,wcp.taobao.com,REJECT
 
+# 针对特定User-Agent的广告拦截
+AND, ((URL-REGEX, ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch), (USER-AGENT, %E9%97%B2%E9%B1%BC*)), REJECT
+
 [Rewrite]
 # MoMo
 ^http:\/\/img\.momocdn\.com\/bannerc\/.*$ reject
-
 ^http:\/\/img\.momocdn\.com\/homepagevideo\/.*$ reject
-
 ^https:\/\/g\.immomo\.com\/fep\/momo.*$ reject
+^https:\/\/i\.kejet\.net\/u\/mm\/r\?.*id=\d+-\d+-\d+-\d+_wm_\d+-\d+_\d+-\d+_.*$ reject
+^https:\/\/fep\.hellogroup\.com\/v4\/config\/ext\/batchRecommend\/.*$ reject
 
 # Taobao
 ^https:\/\/wcp\.taobao\.com\/adstrack\/track\.json.*$ reject
 
-# Custom MoMo URL Rejection
-^https:\/\/i\.kejet\.net\/u\/mm\/r\?.*id=\d+-\d+-\d+-\d+_wm_\d+-\d+_\d+-\d+_.*$,reject
-
-^https:\/\/fep\.hellogroup\.com\/v4\/config\/ext\/batchRecommend\/.*$ reject
-
 [Mitm]
-hostname = i.kejet.net, img.immomo.com, wcp.taobao.com, fep.hellogroup.com,
-g.momocdn.com
+hostname = i.kejet.net, img.immomo.com, wcp.taobao.com, fep.hellogroup.com, g.momocdn.com
