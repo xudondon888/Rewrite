@@ -14,6 +14,8 @@
 
 ^https:\/\/vres\.bbpeyi\.cn\/vod1\/(vod\/(upload|cover)|app\/icons).* url reject-dict
 
+^https:\/\/vlogic\.kvod10\.com\/(vod\/(search\/hotWords|vodState)|app\/announcements)\?appId.* url reject-dict
+
 [filter_local]
 
 DOMAIN-SUFFIX, dsapp01.com, direct
