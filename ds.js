@@ -14,8 +14,10 @@
 
 ^https:\/\/vres\.bbpeyi\.cn\/vod1\/(vod\/(upload|cover)|app\/icons).* url reject-dict
 
+^https?:\/\/vlogic\.kvod10\.com\/(app\/download|vod\/histories|message\/list\/subscribe|app\/announcements).* url reject-dict
+
 [mitm]
-hostname = vf.kkys5.com, vf.qumzgz.cn, vres.kkys6.com, vf.qumzgz.cn, vres.bbpeyi.cn
+hostname = vf.kkys5.com, vf.qumzgz.cn, vres.kkys6.com, vf.qumzgz.cn, vres.bbpeyi.cn, vlogic.kvod10.com
 
 *************************************/
 
