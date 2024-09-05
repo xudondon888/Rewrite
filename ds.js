@@ -18,7 +18,7 @@
 
 [filter_local]
 
-DOMAIN-SUFFIX, dsapp01.com, direct
+DOMAIN-SUFFIX, dsapp01.com, reject
 
 [mitm]
 hostname = vf.kkys5.com, vf.qumzgz.cn, vres.kkys6.com, vf.qumzgz.cn, vres.bbpeyi.cn, vlogic.kvod10.com
